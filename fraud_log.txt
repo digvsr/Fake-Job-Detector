@@ -1,0 +1,6 @@
+Fraudulent case: fake company, Email: fakey@gmail.com, reason : syfgywiurfwfhwhf
+sFraudulent case: fake company, Email: fakey@gmail.com, reason : syfgywiurfwfhwhf
+sFraudulent case: fake company, Email: fakey@gmail.com, reason : syfgywiurfwfhwhf
+sFraudulent case: fake company, Email: fakey@gmail.com, reason : syfgywiurfwfhwhf
+Fraudulent case: fc, Email: fcssuhd@dgvhamoef, reason : Email domain does not match company domain
+Fraudulent case: fake company, Email: fakey@gmail.com, reason : syfgywiurfwfhwhf
