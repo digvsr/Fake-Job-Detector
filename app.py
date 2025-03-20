@@ -5,17 +5,16 @@ import xgboost as xgb
 import re
 import pickle
 from flask import Flask, request, render_template
-from textblob import TextBlob
 
 app = Flask(__name__)
 
 # Load the model and vectorizer
-model = pickle.load(open('jobguard_model.pkl', 'rb'))
+model = pickle.load(open('jobguard_final_model.pkl', 'rb'))
 vectorizer = pickle.load(open('tfidf_vectorizer.pkl', 'rb'))
 
 # Best parameters from grid search
-best_scale_pos_weight = 1
-best_threshold = 0.17
+best_scale_pos_weight = 4
+best_threshold = 0.20
 
 # Feature extraction function
 def extract_features(title, description):
@@ -75,12 +74,6 @@ def extract_features(title, description):
     ) + df['title'].apply(
         lambda x: str(x).count('!')
     )
-    df['sentiment_score'] = df['description'].apply(
-        lambda x: TextBlob(str(x)).sentiment.polarity
-    )
-    df['keyword_density'] = df['suspicious_keywords'] / (df['desc_length'] + 1)
-    df['suspicious_urgency_interaction'] = df['suspicious_keywords'] * df['urgency']
-    df['money_urgency_interaction'] = df['money_mentions'] * df['urgency']
     
     # Drop non-feature columns
     drop_cols = ['title', 'description']

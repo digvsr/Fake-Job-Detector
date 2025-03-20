@@ -3,83 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobGuard AI - Fake Job Detector</title>
+    <title> AI - Fake Job Detector</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 500px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
         }
         h1 {
-            color: #333;
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         form {
             display: flex;
             flex-direction: column;
+            gap: 15px;
         }
         label {
-            margin: 10px 0 5px;
-            color: #555;
+            color: #34495e;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: left;
         }
-        input, textarea {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        textarea {
+            padding: 12px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
             width: 100%;
             box-sizing: border-box;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #0984e3;
+            outline: none;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
         }
         button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         button:hover {
-            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .submit-btn {
+            background-color: #0984e3;
+            color: #fff;
+        }
+        .submit-btn:hover {
+            background-color: #0652dd;
+        }
+        .clear-btn {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        .clear-btn:hover {
+            background-color: #c0392b;
         }
         .result {
             margin-top: 20px;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease;
         }
         .fake {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: #ffebee;
+            color: #c0392b;
+            border: 2px solid #ef5350;
         }
         .legit {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #66bb6a;
+        }
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f6fa;
+            border-radius: 10px;
+            animation: slideIn 0.5s ease;
+        }
+        .feedback p {
+            margin: 0 0 10px;
+            color: #34495e;
+            font-weight: bold;
+        }
+        .feedback-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .feedback-btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .correct-btn {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+        .correct-btn:hover {
+            background-color: #27ae60;
+        }
+        .incorrect-btn {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        .incorrect-btn:hover {
+            background-color: #c0392b;
+        }
+        .correct-label {
+            margin-top: 10px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .correct-label select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 2px solid #dfe6e9;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .feedback-message {
+            color: #2ecc71;
+            font-weight: bold;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>JobGuard AI - Fake Job Detector</h1>
-        <form method="POST">
-            <label for="title">Job Title:</label>
-            <input type="text" id="title" name="title" required>
+        <form method="POST" action="/">
+            <label for="job_text">Enter Job Posting Text:</label>
+            <textarea id="job_text" name="job_text" rows="5" required>{{ job_text if job_text else '' }}</textarea>
             
-            <label for="description">Job Description:</label>
-            <textarea id="description" name="description" rows="5" required></textarea>
-            
-            <button type="submit">Check Job Posting</button>
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Check Job Posting</button>
+                <button type="button" class="clear-btn" onclick="document.getElementById('job_text').value = ''">Clear</button>
+            </div>
         </form>
         
         {% if prediction %}
@@ -87,7 +192,43 @@
             <h2>Result: {{ prediction }}</h2>
             <p>Confidence: {{ confidence }}%</p>
         </div>
+        
+        {% if show_feedback %}
+        <div class="feedback">
+            <p>Is this prediction correct?</p>
+            <form method="POST" action="/feedback">
+                <input type="hidden" name="job_text" value="{{ job_text }}">
+                <input type="hidden" name="prediction" value="{{ prediction }}">
+                <input type="hidden" name="confidence" value="{{ confidence }}">
+                <div class="feedback-buttons">
+                    <button type="submit" name="feedback" value="correct" class="feedback-btn correct-btn">
+                        <span>✔</span> Correct
+                    </button>
+                    <button type="button" class="feedback-btn incorrect-btn" onclick="showCorrectLabel()">
+                        <span>✘</span> Incorrect
+                    </button>
+                </div>
+                <div class="correct-label" id="correct-label">
+                    <label for="correct_label">What should it be?</label>
+                    <select name="correct_label" required>
+                        <option value="Legit">Legit</option>
+                        <option value="Fake">Fake</option>
+                    </select>
+                    <button type="submit" name="feedback" value="incorrect" class="submit-btn">Submit Feedback</button>
+                </div>
+            </form>
+            {% if feedback_message %}
+            <p class="feedback-message">{{ feedback_message }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
         {% endif %}
     </div>
+
+    <script>
+        function showCorrectLabel() {
+            document.getElementById('correct-label').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

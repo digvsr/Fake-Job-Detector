@@ -1,6 +1,6 @@
-JobGuard AI - Fake Job Detector
+SafeJob AI - Fake Job Detector
 
-JobGuard AI is a machine learning-based web application that detects fake job postings. It uses an XGBoost classifier with engineered features to identify scam job listings, achieving 82.7% recall, 71.1% precision, and 97.5% accuracy.
+SafeJob AI is a machine learning-based web application that detects fake job postings. It uses an XGBoost classifier with engineered features to identify scam job listings, achieving 90.2% recall, 53.4% precision, and 95.7% accuracy.
 
 Features
 - Detects fake job postings with high accuracy.
@@ -24,6 +24,6 @@ Features
 The model files (`jobguard_model.pkl`, `tfidf_vectorizer.pkl`) and dataset are not included due to size constraints. To train the model, use the provided grid search script.
 
 ## Metrics
-- Recall: 82.7% (143/173 frauds detected)
-- Precision: 71.1%
-- Accuracy: 97.5%
+- Recall: 90.2% (143/173 frauds detected)
+- Precision: 53.4%
+- Accuracy: 95.7%
