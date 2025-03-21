@@ -201,4 +201,6 @@ def feedback():
     return render_template('index.html', prediction=prediction, confidence=confidence, job_text=job_text, show_feedback=True, feedback_message="Thank you for your feedback!")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.getenv('PORT', 5000))  # Use PORT env var, default to 5000 locally
+    app.run(host='0.0.0.0', port=port, debug=False)
