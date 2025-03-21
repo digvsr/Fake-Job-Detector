@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6b48ff, #00ddeb);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.header-content h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.header-content p {
+    color: #e0e7ff;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    color: #1e3a8a;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+}
+
+textarea {
+    padding: 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+    color: #fff;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #1e40af, #2563eb);
+}
+
+.clear-btn {
+    background: linear-gradient(90deg, #f87171, #dc2626);
+    color: #fff;
+}
+
+.clear-btn:hover {
+    background: linear-gradient(90deg, #ef4444, #b91c1c);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    animation: slideIn 0.5s ease;
+}
+
+.legit {
+    background: linear-gradient(90deg, #d1fae5, #a7f3d0);
+    color: #065f46;
+    border: 2px solid #10b981;
+}
+
+.fake {
+    background: linear-gradient(90deg, #fee2e2, #fecaca);
+    color: #991b1b;
+    border: 2px solid #ef4444;
+}
+
+.feedback {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f4f8;
+    border-radius: 10px;
+    animation: slideIn 0.5s ease;
+}
+
+.feedback p {
+    margin: 0 0 10px;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+.feedback-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.feedback-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.correct-btn {
+    background: linear-gradient(90deg, #34d399, #10b981);
+    color: #fff;
+}
+
+.correct-btn:hover {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.incorrect-btn {
+    background: linear-gradient(90deg, #f87171, #dc2626);
+    color: #fff;
+}
+
+.incorrect-btn:hover {
+    background: linear-gradient(90deg, #ef4444, #b91c1c);
+}
+
+.correct-label {
+    margin-top: 10px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.correct-label select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #d1d5db;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.feedback-message {
+    color: #10b981;
+    font-weight: 600;
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
