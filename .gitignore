@@ -1,6 +1,4 @@
  # Ignore large model files and dataset
-jobguard_model.pkl
-tfidf_vectorizer.pkl
 data/
 env/
 *.csv
