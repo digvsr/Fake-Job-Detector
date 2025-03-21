@@ -11,8 +11,8 @@ import os
 app = Flask(__name__)
 
 # Load the model and vectorizer
-model = pickle.load(open('jobguard_model.pkl', 'rb'))
-vectorizer = pickle.load(open('tfidf_vectorizer.pkl', 'rb'))
+model = pickle.load(open('static/models/jobguard_model.pkl', 'rb'))
+vectorizer = pickle.load(open('static/models/tfidf_vectorizer.pkl', 'rb'))
 
 # Best parameters from grid search
 best_scale_pos_weight = 4
