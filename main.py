@@ -11,7 +11,8 @@ import os
 app = Flask(__name__)
 
 # Load the model and vectorizer
-model = pickle.load(open('jobguard_model.pkl', 'rb'))
+model = xgb.Booster()
+model.load_model("jobguard_model.json")
 vectorizer = pickle.load(open('tfidf_vectorizer.pkl', 'rb'))
 
 # Best parameters from grid search
